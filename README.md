@@ -6,7 +6,7 @@ This repo contains 2 projects and associated files:
 
     Values are returned for:
     1. Total Months
-    2. Total 
+    2. Total Profit/Loss
     3. Average Change
     4. Greatest Monthly Increase in Profits
     5. Greatest Monthly Decrease in Profits
