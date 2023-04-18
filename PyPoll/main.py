@@ -4,7 +4,9 @@ import csv
 #find csv file in project folder
 poll_csv = os.path.join("Resources", "election_data.csv")
 
+#set variables
 can_set = set()
+canlist = []
 can1name = str()
 can2name = str()
 can3name = str()
@@ -20,14 +22,15 @@ can3percent = float
 #reading csv to extract candidate names
 with open(poll_csv) as csvfile:
     csv_reader = csv.reader(csvfile, delimiter=",")
+
     #cut off header
     header = next(csv_reader)
-    #read as set to find unique values: https://stackoverflow.com/questions/12897374/get-unique-values-from-a-list-in-python
-    for row in csv_reader:
-        can_set.add(row[2])
-    #turning set into list to find unique values
-    canlist = list(can_set)
 
+    #read as set first to filter unique values and add to list
+    for row in csv_reader:
+        if row[2] not in can_set:
+            can_set.add(row[2])
+            canlist.append(row[2])
    
     #naming candidates from list index
     can1name = canlist[0]
@@ -53,6 +56,7 @@ with open(poll_csv) as csvfile:
 
     #tallying total votes by adding individual candidate quantities
     totalvote = can1 + can2 + can3
+
     #determininig winner
     if can1 > can2 and can1 > can3:
         winner = can1name
@@ -60,6 +64,7 @@ with open(poll_csv) as csvfile:
         winner = can2name
     elif can3 > can1 and can3 > can2:
         winner = can3name
+
     #tallying candidate percentagers of total. {0:.3%} is limiting decimal to 3 places to align with prompt
     can1percent = "{0:.3%}".format(can1 / totalvote)
 
@@ -76,11 +81,8 @@ with open(poll_csv) as csvfile:
     print(f'{can1name}: {can1percent} ({can1})')
     print(f'{can2name}: {can2percent} ({can2})')
     print(f'{can3name}: {can3percent} ({can3})')
-
     print("---------------------------")
-
     print("Winner: ", winner)
-
     print("---------------------------")
 
 

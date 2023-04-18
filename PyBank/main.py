@@ -1,7 +1,7 @@
 import os
 import csv
 
-#navigate to csv folder, load csv
+#navigate to Resource folder, load csv
 budget_csv = os.path.join("Resources", "budget_data.csv")
 
 #set initial values for counters/calculators
@@ -60,7 +60,6 @@ with open(budget_csv) as csvfile:
     average = sum(change_list)/len(change_month)
 
     # Looking for the Min and Max values in the list of monthly change
-    #https://stackoverflow.com/questions/48920014/how-to-extract-the-min-value-and-max-value-from-csv-file-using-python
     min = min(change_list)
     max = max(change_list)
 
@@ -86,7 +85,7 @@ bank_results = os.path.join("analysis", "bank_results.txt")
 
 # Open text file using "write" mode. Specify the variable to hold the contents
 with open(bank_results, 'w') as text_file:
-   # printing to text file https://stackoverflow.com/questions/5214578/print-string-to-text-file
+   # printing to text file
    print("Financial Analysis", file=text_file)
    print("------------------------------", file=text_file)
    print(f'Total Months: {months}',file=text_file)
