@@ -1,5 +1,7 @@
 # python-challenge
 
+Analyzing bank and poll data using Python (via VSCode)
+
 This repo contains 2 projects and associated files:
 
 1. PyBank - main.py pulls data from budget_data.csv (located in Resources folder) and returns requested results. Results are printed to terminal and bank_results.txt (located in analysis folder).
